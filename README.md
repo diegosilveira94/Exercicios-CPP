@@ -5,4 +5,4 @@ Tais exercícios me auxiliaram na aprendizado de Programação, colocando em pr�
 
 A Estrutura deste Repositório é bem simples: existem 4 pastas (1º Lista, 2º Lista, 3º Lista, 4º Lista), e em cada uma delas existirá uma Listagem de Exercícios, e seus repectivos códigos (*.cpp).
 
-Conforme novos assuntos estão sendo aprendidos, novas pastas podem serem criadas com novos exercícios. Espero que sirva como material didático você.
+Conforme novos assuntos estão sendo aprendidos, novas pastas podem serem criadas com novos exercícios. Espero que sirva como material didático para você.
