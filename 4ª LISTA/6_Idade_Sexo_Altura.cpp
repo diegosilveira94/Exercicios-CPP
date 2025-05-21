@@ -23,6 +23,7 @@ char sexo;
 main(){
 	system("chcp 65001");// Para acentuar as palavras
 	system("cls");
+	cout<<fixed<<setprecision(2);
 	cout<<"\n\t ===========================================";
 	cout<<"\n\t\t PROGRAMA IDADE, SEXO E ALTURA ";
 	cout<<"\n\t ===========================================\n";
@@ -30,27 +31,27 @@ main(){
 	cin>>pessoas;
 	sexo = toupper(sexo);
 	for (i = 1; i <=pessoas; i++){ //coleta de dados
-		cout<<"\n\nDigite a idade da "<< i <<"ª pessoa: ";
+		cout<<"\n\nIdade "<< i <<"ª pessoa: ";
 		cin>>idade;
-		cout<<"Digite o sexo da "<< i <<"ª pessoa (M ou F): ";
+		cout<<"Sexo "<< i <<"ª pessoa (M ou F): ";
 		cin>>sexo;
-		cout<<"Digite a altura da "<< i <<"ª pessoa: ";
+		cout<<"Altura "<< i <<"ª pessoa: ";
 		cin>>altura;
 		// Acumulador de todas as idades
-		acum_Idade =+ idade;
+		acum_Idade += idade;
 		// Acumulador de todas as alturas
-		acum_Altura =+ altura;
+		acum_Altura += altura;
 			//A média das alturas e das idades das mulheres
 			if (sexo == 'F'){
 				cont_Mulher++;
-				acum_Alt_Fem=+altura;
-				acum_Idade_Fem=+idade;
+				acum_Alt_Fem += altura;
+				acum_Idade_Fem += idade;
 			}
 			//A média das alturas e das idades dos homens
 			if (sexo == 'M'){
-				cont_Homem;
-				acum_Alt_Mas=+altura;
-				acum_Idade_Mas=+idade;
+				cont_Homem++;
+				acum_Alt_Mas += altura;
+				acum_Idade_Mas += idade;
 			}
 			// A quantidade de mulheres acima de 1,70 m
 			if (sexo == 'F' && altura > 1.70)
@@ -61,9 +62,8 @@ main(){
 			//A quantidade de mulheres abaixo de 1,65 m
 			if (sexo == 'F' && altura > 1.65)
 				cont_Alt_Fem2++;
-	}
-	media_
-	cout << "\n\n> 👧� Média de todas as idades: " << acum_Idade / pessoas;
+	} 
+	cout << "\n\n> 👧👦 Média de todas as idades: " << acum_Idade / pessoas;
 	cout << "\n> 👧👦 Média de todas as alturas: " << acum_Altura / pessoas;
 	cout << "\n> 👧 Média das idades das mulheres: " << acum_Idade_Fem / cont_Mulher;
 	cout << "\n> 👧 Média das alturas das mulheres: " << acum_Alt_Fem / cont_Mulher;
