@@ -27,33 +27,38 @@ main(){
 	cout<<"\n\nDigite quantas pessoas quer informar: ";
 	cin>>pessoas;
 	sexo = toupper(sexo);
-	for (i = 1; i <=pessoas; i++){ //coleta de dados
-		cout<<"\n\nIdade "<< i <<"ª pessoa: ";
+	for (i = 0; i < pessoas; i++){ //coleta de dados
+		cout<<"\n\nIdade "<< i + 1<<"ª pessoa: ";
 		cin>>idade;
-		cout<<"Sexo "<< i <<"ª pessoa (M ou F): ";
+		cout<<"Sexo "<< i + 1<<"ª pessoa (M ou F): ";
 		cin>>sexo;
-		cout<<"Altura "<< i <<"ª pessoa: ";
+		cout<<"Altura "<< i + 1<<"ª pessoa: ";
 		cin>>altura;
 		// Acumulador de todas as idades
 		acum_Idade += idade;
 		// Acumulador de todas as alturas
 		acum_Altura += altura;
-		// Maior idade de todos
-		maior_idade = idade;
-		if (idade > maior_idade)
+		// Maior e menor
+		if(i == 0) {
 			maior_idade = idade;
-		// Menor idade de todos
-		menor_idade = idade;
-		if (idade < menor_idade)
 			menor_idade = idade;
-		// Maior altura de todos
-		maior_altura = altura;
-		if (altura > maior_altura)
-			maior_altura = altura;
-		// Menor altura de todos;
-		menor_altura = altura;
-		if (altura < menor_altura)
-			menor_altura = altura; 
+			maior_altura = altura;	
+			menor_altura = altura;
+
+		} else {
+				// maior idade de todos
+				if(idade > maior_idade)
+					maior_idade = idade;
+				//menor idade de todos
+				if (idade < menor_idade)
+					menor_idade = idade;
+				// maior altura de todos
+				if (altura > maior_altura)
+					maior_altura = altura;
+				// menor altura de todos;
+				if (altura < menor_altura)
+					menor_altura = altura; 
+		}
 		//A média das alturas e das idades das mulheres
 		if (sexo == 'F'){
 			cont_Mulher++;
@@ -78,13 +83,23 @@ main(){
 	} 
 	cout << "\n\n> 👧👦 Média de todas as idades: " << acum_Idade / pessoas;
 	cout << "\n> 👧👦 Média de todas as alturas: " << acum_Altura / pessoas;
-	cout << "\n> 👧 Média das idades das mulheres: " << acum_Idade_Fem / cont_Mulher;
-	cout << "\n> 👧 Média das alturas das mulheres: " << acum_Alt_Fem / cont_Mulher;
+	cout << "\n> 👧 Média das idades das mulheres: " << (cont_Mulher != 0 ? acum_Idade_Fem / cont_Mulher : 0);
+	cout << "\n> 👧 Média das alturas das mulheres: " << (cont_Mulher != 0 ? acum_Alt_Fem / cont_Mulher : 0);
 	cout << "\n> 👧 Quantidade de mulheres acima de 1,70m: " << cont_Alt_Fem1;
 	cout << "\n> 👦 Quantidade de homens acima de 1,85m: " << cont_Alt_Mas1;
 	cout << "\n> 👧 Quantidade de mulheres abaixo de 1,65m: " << cont_Alt_Fem2;
-	cout << "\n> 👧 Menor idade de todos: " << menor_idade;
-	cout << "\n> 👧 Maior idade de todos: " << maior_idade;
+	cout << "\n> 👧👦 Menor idade de todos: " << menor_idade;
+	cout << "\n> 👧👦 Maior idade de todos: " << maior_idade;
+	cout << "\n> 👧👦 Maior altura de todos: " << maior_altura;
+	cout << "\n> 👧👦 Menor altura de todos: " << menor_altura;
+	cout << "\n> 👦 Menor idade dos homens: " << maior_altura;
+	cout << "\n> 👦 Maior idade dos homens: " << maior_altura;
+	cout << "\n> 👧 Menor idade das mulheres: " << maior_altura;
+	cout << "\n> 👧 Maior idade das mulheres: " << maior_altura;
+	cout << "\n> 👦 Maior altura dos homens: " << maior_altura;
+	cout << "\n> 👦 Menor altura dos homens: " << maior_altura;
+	cout << "\n> 👧 Maior altura das mulheres: " << maior_altura;
+	cout << "\n> 👧 Menor idade das mulheres: " << maior_altura;
 	
 	cout<<"\n\n\n\n";
 }
