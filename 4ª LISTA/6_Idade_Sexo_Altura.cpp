@@ -1,7 +1,4 @@
-/* 6. FUP que leia a idade, o sexo e a altura de N pessoas, 
-onde N pessoas deverá ser o limite da repetição do FOR e 
-deverá ser solicitado ao usuário. Após a entrada dos valores o 
-programa deverá informar:
+/* 6. FUP que leia a idade, o sexo e a altura de N pessoas, onde N pessoas deverá ser o limite da repetição do FOR e deverá ser solicitado ao usuário. Após a entrada dos valores o programa deverá informar:
  A média de todas as idades e alturas.
  A média das alturas e das idades das mulheres.
  A média das alturas e das idades dos homens.
@@ -17,7 +14,7 @@ programa deverá informar:
 #include <iomanip>
 #include <climits>
 using namespace std;
-int idade,pessoas=0,i,acum_Idade,acum_Idade_Fem,acum_Idade_Mas,cont_Alt_Fem1,cont_Alt_Mas1,cont_Alt_Fem2, cont_Mulher, cont_Homem;
+int idade, pessoas=0, i, acum_Idade, acum_Idade_Fem, acum_Idade_Mas, cont_Alt_Fem1, cont_Alt_Mas1, cont_Alt_Fem2, cont_Mulher, cont_Homem, maior_idade, menor_idade, maior_altura, menor_altura;
 float altura,acum_Altura,acum_Alt_Fem,acum_Alt_Mas;
 char sexo;
 main(){
@@ -41,27 +38,43 @@ main(){
 		acum_Idade += idade;
 		// Acumulador de todas as alturas
 		acum_Altura += altura;
-			//A média das alturas e das idades das mulheres
-			if (sexo == 'F'){
-				cont_Mulher++;
-				acum_Alt_Fem += altura;
-				acum_Idade_Fem += idade;
-			}
-			//A média das alturas e das idades dos homens
-			if (sexo == 'M'){
-				cont_Homem++;
-				acum_Alt_Mas += altura;
-				acum_Idade_Mas += idade;
-			}
-			// A quantidade de mulheres acima de 1,70 m
-			if (sexo == 'F' && altura > 1.70)
-				cont_Alt_Fem1++;
-			// A quantidade de homens acima de 1,85 m
-			if (sexo == 'M' && altura > 1.85)
-				cont_Alt_Mas1++;
-			//A quantidade de mulheres abaixo de 1,65 m
-			if (sexo == 'F' && altura > 1.65)
-				cont_Alt_Fem2++;
+		// Maior idade de todos
+		maior_idade = idade;
+		if (idade > maior_idade)
+			maior_idade = idade;
+		// Menor idade de todos
+		menor_idade = idade;
+		if (idade < menor_idade)
+			menor_idade = idade;
+		// Maior altura de todos
+		maior_altura = altura;
+		if (altura > maior_altura)
+			maior_altura = altura;
+		// Menor altura de todos;
+		menor_altura = altura;
+		if (altura < menor_altura)
+			menor_altura = altura; 
+		//A média das alturas e das idades das mulheres
+		if (sexo == 'F'){
+			cont_Mulher++;
+			acum_Alt_Fem += altura;
+			acum_Idade_Fem += idade;
+		}
+		//A média das alturas e das idades dos homens
+		if (sexo == 'M'){
+			cont_Homem++;
+			acum_Alt_Mas += altura;
+			acum_Idade_Mas += idade;
+		}
+		// A quantidade de mulheres acima de 1,70 m
+		if (sexo == 'F' && altura > 1.70)
+			cont_Alt_Fem1++;
+		// A quantidade de homens acima de 1,85 m
+		if (sexo == 'M' && altura > 1.85)
+			cont_Alt_Mas1++;
+		//A quantidade de mulheres abaixo de 1,65 m
+		if (sexo == 'F' && altura > 1.65)
+			cont_Alt_Fem2++;
 	} 
 	cout << "\n\n> 👧👦 Média de todas as idades: " << acum_Idade / pessoas;
 	cout << "\n> 👧👦 Média de todas as alturas: " << acum_Altura / pessoas;
@@ -70,7 +83,8 @@ main(){
 	cout << "\n> 👧 Quantidade de mulheres acima de 1,70m: " << cont_Alt_Fem1;
 	cout << "\n> 👦 Quantidade de homens acima de 1,85m: " << cont_Alt_Mas1;
 	cout << "\n> 👧 Quantidade de mulheres abaixo de 1,65m: " << cont_Alt_Fem2;
-	
+	cout << "\n> 👧 Menor idade de todos: " << menor_idade;
+	cout << "\n> 👧 Maior idade de todos: " << maior_idade;
 	
 	cout<<"\n\n\n\n";
 }
