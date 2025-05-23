@@ -14,10 +14,10 @@
 #include <iomanip>
 #include <climits>
 using namespace std;
-int idade, pessoas=0, i, acum_Idade, acum_Idade_Fem, acum_Idade_Mas, cont_Alt_Fem1, cont_Alt_Mas1, cont_Alt_Fem2, cont_Mulher, cont_Homem,menor_idade,menor_idade_homens,maior_idade_homens,menor_idade_mulheres,maior_idade_mulheres;
-float altura,acum_Altura,acum_Alt_Fem,acum_Alt_Mas,menor_alt_homens,maior_alt_homens,menor_alt_mulheres,maior_alt_mulheres, maior_altura,maior_idade, menor_altura;
+int idade, pessoas=0, i, acum_Idade=0, acum_Idade_Fem=0, acum_Idade_Mas=0, cont_Alt_Fem1=0, cont_Alt_Mas1=0, cont_Alt_Fem2=0, cont_Mulher=0, cont_Homem,menor_idade,menor_idade_homens,maior_idade_homens,maior_idade,menor_idade_mulheres,maior_idade_mulheres;
+float altura,acum_Altura=0,acum_Alt_Fem=0,acum_Alt_Mas=0,menor_alt_homens=0,maior_alt_homens,menor_alt_mulheres=0,maior_alt_mulheres=0, maior_altura, menor_altura;
 char sexo;
-main(){
+int main(){
 	system("chcp 65001");// Para acentuar as palavras
 	system("cls");
 	cout<<fixed<<setprecision(2);
@@ -26,75 +26,75 @@ main(){
 	cout<<"\n\t ===========================================\n";
 	cout<<"\n\nDigite quantas pessoas quer informar: ";
 	cin>>pessoas;
-	sexo = toupper(sexo);
+	
+	maior_idade = INT_MIN;
+    menor_idade = INT_MAX;
+    maior_altura = -1;
+    menor_altura = 999;
+    
+    maior_idade_homens = INT_MIN;
+    menor_idade_homens = INT_MAX;
+    maior_alt_homens = -1;
+    menor_alt_homens = 999;
+    
+    maior_idade_mulheres = INT_MIN;
+    menor_idade_mulheres = INT_MAX;
+    maior_alt_mulheres = -1;
+    menor_alt_mulheres = 999;
+    
 	for (i = 0; i < pessoas; i++){ //coleta de dados
 		cout<<"\n\nIdade "<< i + 1<<"ª pessoa: ";
 		cin>>idade;
 		cout<<"Sexo "<< i + 1<<"ª pessoa (M ou F): ";
 		cin>>sexo;
+		sexo = toupper(sexo);
 		cout<<"Altura "<< i + 1<<"ª pessoa: ";
 		cin>>altura;
 		// Acumulador de todas as idades
 		acum_Idade += idade;
 		// Acumulador de todas as alturas
 		acum_Altura += altura;
-		// Maior e menor
-		if(i == 0) {
+		// maior idade de todos
+		if(idade > maior_idade)
 			maior_idade = idade;
+		//menor idade de todos
+		if (idade < menor_idade)
 			menor_idade = idade;
-			maior_altura = altura;	
+		// maior altura de todos
+		if (altura > maior_altura)
+			maior_altura = altura;
+		// menor altura de todos;
+		if (altura < menor_altura)
 			menor_altura = altura;
-			if (sexo == 'M')
-				menor_alt_homens = altura;
-				maior_alt_homens = altura;
-				menor_idade_homens = idade;
-				maior_idade_homens = idade;
-			if (sexo == 'F')
-				menor_alt_mulheres = 1.90;
-				maior_alt_mulheres = 1.90;
-				menor_idade_mulheres = idade;
-				maior_idade_mulheres = idade;
-		} else {
-				// maior idade de todos
-				if(idade > maior_idade)
-					maior_idade = idade;
-				//menor idade de todos
-				if (idade < menor_idade)
-					menor_idade = idade;
-				// maior altura de todos
-				if (altura > maior_altura)
-					maior_altura = altura;
-				// menor altura de todos;
-				if (altura < menor_altura)
-					menor_altura = altura;
-					// menor altura dos homens
-				if (sexo == 'M' && altura < menor_alt_homens)
-					menor_alt_homens = altura;
-					// maior altura dos homens
-				if (sexo == 'M' && altura > maior_alt_homens)
-					maior_alt_homens = altura;
-					// menor idade dos homens
-				if (sexo == 'M' && idade < menor_idade_homens)
-					menor_idade_homens = idade;
-				if (sexo == 'M' && altura > maior_idade_homens)
-					maior_idade_homens = altura;
-				// menor altura das mulheres
-				if (sexo == 'F' && altura < menor_alt_mulheres)
-					menor_alt_mulheres = altura;
-				// maior altura das mulheres
-				if (sexo == 'F' && altura > maior_alt_mulheres)
-					maior_alt_mulheres = altura;
-				if (sexo == 'F' && idade < menor_idade_mulheres)
-					menor_idade_mulheres = altura;
-		}
+		// menor altura dos homens
+		if (sexo == 'M' && altura < menor_alt_homens)
+			menor_alt_homens = altura;
+		// maior altura dos homens
+		if (sexo == 'M' && altura > maior_alt_homens)
+			maior_alt_homens = altura;
+		// menor idade dos homens
+		if (sexo == 'M' && idade < menor_idade_homens)
+			menor_idade_homens = idade;
+		// maior idade dos homens
+		if (sexo == 'M' && idade > maior_idade_homens)
+			maior_idade_homens = idade;
+		// menor altura das mulheres
+		if (sexo == 'F' && altura < menor_alt_mulheres)
+			menor_alt_mulheres = altura;
+		// maior altura das mulheres
+		if (sexo == 'F' && altura > maior_alt_mulheres)
+			maior_alt_mulheres = altura;
+	    // maior idade mulheres
+	    if (sexo == 'F' && idade > maior_idade_mulheres)
+			maior_idade_mulheres = idade;
+		// menor idade mulheres
+		if (sexo == 'F' && idade < menor_idade_mulheres)
+		    menor_idade_mulheres = idade;
 		//A média das alturas e das idades das mulheres
 		if (sexo == 'F'){
 			cont_Mulher++;
 			acum_Alt_Fem += altura;
 			acum_Idade_Fem += idade;
-			// maior idade mulheres
-			if (idade > maior_idade_mulheres)
-					maior_idade_mulheres = altura;
 		}
 		//A média das alturas e das idades dos homens
 		if (sexo == 'M'){
@@ -109,7 +109,7 @@ main(){
 		if (sexo == 'M' && altura > 1.85)
 			cont_Alt_Mas1++;
 		//A quantidade de mulheres abaixo de 1,65 m
-		if (sexo == 'F' && altura > 1.65)
+		if (sexo == 'F' && altura < 1.65)
 			cont_Alt_Fem2++;
 	} 
 	cout << "\n\n> 👧👦 Média de todas as idades: " << acum_Idade / pessoas;
@@ -133,4 +133,6 @@ main(){
 	cout << "\n> 👧 Menor altura das mulheres: " << menor_alt_mulheres;
 	
 	cout<<"\n\n\n\n";
+	
+	return 0;
 }
