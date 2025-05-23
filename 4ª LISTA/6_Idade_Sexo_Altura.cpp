@@ -14,8 +14,8 @@
 #include <iomanip>
 #include <climits>
 using namespace std;
-int idade, pessoas=0, i, acum_Idade, acum_Idade_Fem, acum_Idade_Mas, cont_Alt_Fem1, cont_Alt_Mas1, cont_Alt_Fem2, cont_Mulher, cont_Homem, maior_idade, menor_idade, maior_altura, menor_altura;
-float altura,acum_Altura,acum_Alt_Fem,acum_Alt_Mas;
+int idade, pessoas=0, i, acum_Idade, acum_Idade_Fem, acum_Idade_Mas, cont_Alt_Fem1, cont_Alt_Mas1, cont_Alt_Fem2, cont_Mulher, cont_Homem,menor_idade,menor_idade_homens,maior_idade_homens,menor_idade_mulheres,maior_idade_mulheres;
+float altura,acum_Altura,acum_Alt_Fem,acum_Alt_Mas,menor_alt_homens,maior_alt_homens,menor_alt_mulheres,maior_alt_mulheres, maior_altura,maior_idade, menor_altura;
 char sexo;
 main(){
 	system("chcp 65001");// Para acentuar as palavras
@@ -44,7 +44,16 @@ main(){
 			menor_idade = idade;
 			maior_altura = altura;	
 			menor_altura = altura;
-
+			if (sexo == 'M')
+				menor_alt_homens = altura;
+				maior_alt_homens = altura;
+				menor_idade_homens = idade;
+				maior_idade_homens = idade;
+			if (sexo == 'F')
+				menor_alt_mulheres = 1.90;
+				maior_alt_mulheres = 1.90;
+				menor_idade_mulheres = idade;
+				maior_idade_mulheres = idade;
 		} else {
 				// maior idade de todos
 				if(idade > maior_idade)
@@ -57,13 +66,35 @@ main(){
 					maior_altura = altura;
 				// menor altura de todos;
 				if (altura < menor_altura)
-					menor_altura = altura; 
+					menor_altura = altura;
+					// menor altura dos homens
+				if (sexo == 'M' && altura < menor_alt_homens)
+					menor_alt_homens = altura;
+					// maior altura dos homens
+				if (sexo == 'M' && altura > maior_alt_homens)
+					maior_alt_homens = altura;
+					// menor idade dos homens
+				if (sexo == 'M' && idade < menor_idade_homens)
+					menor_idade_homens = idade;
+				if (sexo == 'M' && altura > maior_idade_homens)
+					maior_idade_homens = altura;
+				// menor altura das mulheres
+				if (sexo == 'F' && altura < menor_alt_mulheres)
+					menor_alt_mulheres = altura;
+				// maior altura das mulheres
+				if (sexo == 'F' && altura > maior_alt_mulheres)
+					maior_alt_mulheres = altura;
+				if (sexo == 'F' && idade < menor_idade_mulheres)
+					menor_idade_mulheres = altura;
 		}
 		//A média das alturas e das idades das mulheres
 		if (sexo == 'F'){
 			cont_Mulher++;
 			acum_Alt_Fem += altura;
 			acum_Idade_Fem += idade;
+			// maior idade mulheres
+			if (idade > maior_idade_mulheres)
+					maior_idade_mulheres = altura;
 		}
 		//A média das alturas e das idades dos homens
 		if (sexo == 'M'){
@@ -92,14 +123,14 @@ main(){
 	cout << "\n> 👧👦 Maior idade de todos: " << maior_idade;
 	cout << "\n> 👧👦 Maior altura de todos: " << maior_altura;
 	cout << "\n> 👧👦 Menor altura de todos: " << menor_altura;
-	cout << "\n> 👦 Menor idade dos homens: " << maior_altura;
-	cout << "\n> 👦 Maior idade dos homens: " << maior_altura;
-	cout << "\n> 👧 Menor idade das mulheres: " << maior_altura;
-	cout << "\n> 👧 Maior idade das mulheres: " << maior_altura;
-	cout << "\n> 👦 Maior altura dos homens: " << maior_altura;
-	cout << "\n> 👦 Menor altura dos homens: " << maior_altura;
-	cout << "\n> 👧 Maior altura das mulheres: " << maior_altura;
-	cout << "\n> 👧 Menor idade das mulheres: " << maior_altura;
+	cout << "\n> 👦 Menor idade dos homens: " << menor_idade_homens;
+	cout << "\n> 👦 Maior idade dos homens: " << maior_idade_homens;
+	cout << "\n> 👧 Menor idade das mulheres: " << menor_idade_mulheres;
+	cout << "\n> 👧 Maior idade das mulheres: " << maior_idade_mulheres;
+	cout << "\n> 👦 Maior altura dos homens: " << maior_alt_homens;
+	cout << "\n> 👦 Menor altura dos homens: " << menor_alt_homens;
+	cout << "\n> 👧 Maior altura das mulheres: " << maior_alt_mulheres;
+	cout << "\n> 👧 Menor altura das mulheres: " << menor_alt_mulheres;
 	
 	cout<<"\n\n\n\n";
 }
