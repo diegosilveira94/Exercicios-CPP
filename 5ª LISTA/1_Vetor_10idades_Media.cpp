@@ -3,6 +3,7 @@ quantidade de pessoas com idade superior e inferior à média calculada
 */
 #include <iostream> // padrão cout e cin
 #include <time.h> // uso do rand e srand
+#include <limits.h> // int max e min
 
 using namespace std;
 
@@ -15,15 +16,16 @@ int main(){
     cout << "\n\n\t =============================" << endl;
     cout << "\t  PROGRAMA MÉDIA DE 10 IDADES";
     cout << "\n\t =============================" << endl;
-    cout << "Idades: ";
-    maior_idade = INT_MAX;
-    menor_idade = INT_MIN;
+    cout << " Idades: ";
+    maior_idade = INT_MIN;
+    menor_idade = INT_MAX;
     for(int i = 0; i < 10; i++) {
         idades[i] = 1 + rand() % 101;
-        cout << idades[i] << " - ";
+        cout << idades[i];
+        i < 9 ? (cout << " - ") : (cout << " ");
         soma += idades[i];
-        menor_idade = idades[i];
-        maior_idade = idades[i];
+        //menor_idade = idades[i];
+        //maior_idade = idades[i];
         // menor idade
         if (idades[i] < menor_idade)
             menor_idade = idades[i];
@@ -33,8 +35,8 @@ int main(){
     }
     media_idades = soma / 10;
     cout << "\n Média das idades: " << media_idades << endl;
-    cout << "Maior idade: " << maior_idade << endl;
-    cout << "Menor idade: " << menor_idade << endl;
+    cout << " Maior idade: " << maior_idade << endl;
+    cout << " Menor idade: " << menor_idade << endl;
 
 	cout<<"\n\n\n\n";
 	
