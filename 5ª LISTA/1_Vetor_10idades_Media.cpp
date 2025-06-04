@@ -16,7 +16,7 @@ int main(){
     cout << "\n\n\t =============================" << endl;
     cout << "\t  PROGRAMA MÉDIA DE 10 IDADES";
     cout << "\n\t =============================" << endl;
-    cout << " Idades: ";
+    cout << "\n\n Idades: ";
     maior_idade = INT_MIN;
     menor_idade = INT_MAX;
     for(int i = 0; i < 10; i++) {
